@@ -1,6 +1,13 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 
 public class Scissors implements Move {
+	private static Scissors instance = new Scissors(); 
+	
+	protected Scissors() {}
+	
+	public static Scissors getInstance() {
+		return instance;
+	}
 	public Move vs(Move move){
 		return move.vs(this);
 	}
