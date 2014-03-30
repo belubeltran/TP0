@@ -1,6 +1,9 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 
-public class Paper {
+public class Paper implements Move {
+	public Move vs(Move move){
+		return move.vs(this);
+	}
 	public Paper vs(Paper paper) {
 		return paper;
 	}
