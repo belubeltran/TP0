@@ -1,23 +1,21 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 
-public class Rock implements Move {
+public class Rock implements Element {
+	
+	/** La clase Rock permite una única instancia, ya que durante el juego no es
+	 * necesario distinguir los posibles Rock, sino saber que es de tipo Rock **/
 	private static Rock instance = new Rock(); 
 	
+	/** Constructor protegido para evitar que se creen múltiples instancias de Rock **/
 	protected Rock() {}
 	
 	public static Rock getInstance() {
 		return instance;
 	}
-	public Move vs(Move move){
-		return move.vs(this);
+	
+	/** Implementación del método abstracto de la interfaz Element, que utiliza al Referee
+	 * para decidir al elemento ganador entre Rock y el elemento pasado por parámetros **/
+	public Element vs(Element element){
+		return referee.decideWinner(element, this);
 	}
-	public Paper vs(Paper paper) {
-		return paper;
-	}
-	public Rock vs(Scissors scissors) {
-		return this;
-	}
-	public Rock vs(Rock rock) {
-		return rock;
-	}	
 }
