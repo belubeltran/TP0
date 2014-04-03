@@ -1,0 +1,11 @@
+<rules>
+  <element id="Rock">
+    <win>Scissors</win>
+  </element>
+  <element id="Paper">
+    <win>Rock</win>
+  </element>
+  <element id="Scissors">
+    <win>Paper</win>
+  </element>
+</rules>
