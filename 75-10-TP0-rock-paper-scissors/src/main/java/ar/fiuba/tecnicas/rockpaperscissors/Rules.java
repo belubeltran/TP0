@@ -17,6 +17,7 @@ public class Rules extends DefaultHandler {
 	private Vector<Element> rockWins = new Vector<Element>();
 	private Vector<Element> paperWins = new Vector<Element>();
 	private Vector<Element> scissorsWins = new Vector<Element>();
+	private Vector<Element> fireWins = new Vector<Element>();
 	
 	/** Permiten la lectura del archivo de reglas **/
 	String tagContent = null;
@@ -38,17 +39,14 @@ public class Rules extends DefaultHandler {
 	/** Metodo que guarda en el respectivo vector pasado por parametros, el elemento
 	 * al que éste le gana **/
 	private void addWin(Vector<Element> wins) {
-		switch (tagContent) {
-			case "Rock":
-				wins.add(Rock.getInstance());
-				break;
-			case "Paper":
-				wins.add(Paper.getInstance());
-				break;
-			case "Scissors":
-				wins.add(Scissors.getInstance());
-				break;
-		}
+		if (tagContent.contentEquals("Rock"))
+			wins.add(Rock.getInstance());
+		else if (tagContent.contentEquals("Paper"))
+			wins.add(Paper.getInstance());
+		else if (tagContent.contentEquals("Scissors"))
+			wins.add(Scissors.getInstance());
+		else if (tagContent.contentEquals("Fire"))
+			wins.add(Fire.getInstance());
 	}
 	
 	@Override
@@ -74,6 +72,9 @@ public class Rules extends DefaultHandler {
      		else if (tagName.contains("Scissors")) {
      			addWin(scissorsWins);
      		}
+     		else if (tagName.contains("Fire")) {
+     			addWin(fireWins);
+     		}
      	}
 	}
 
@@ -97,5 +98,9 @@ public class Rules extends DefaultHandler {
 	
 	public Vector<Element> getScissorsWins() {
 		return scissorsWins;
+	}
+	
+	public Vector<Element> getFireWins() {
+		return fireWins;
 	}
 }

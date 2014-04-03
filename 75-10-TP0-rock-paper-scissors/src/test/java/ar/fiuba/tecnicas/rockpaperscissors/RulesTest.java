@@ -10,7 +10,7 @@ public class RulesTest {
     private Element rock = Rock.getInstance();
     private Element paper = Paper.getInstance();
     private Element scissors = Scissors.getInstance();
-    private Element fire;
+    private Element fire = Fire.getInstance();
 
     @Test
     public void rockBeatsScissors() {
@@ -59,7 +59,7 @@ public class RulesTest {
 
     @Test
     public void rockBeatsFire() {
-        assertEquals(rock, rock.vs(fire));
+        assertEquals(rock, fire.vs(rock));
     }
 
     @Test
@@ -69,11 +69,11 @@ public class RulesTest {
 
     @Test
     public void paperLostWithFire() {
-        assertEquals(paper, paper.vs(fire));
+        assertEquals(fire, fire.vs(paper));
     }
 
     @Test
     public void scissorsLostWithFire() {
-        assertEquals(scissors, scissors.vs(fire));
+        assertEquals(fire, fire.vs(scissors));
     }
 }
