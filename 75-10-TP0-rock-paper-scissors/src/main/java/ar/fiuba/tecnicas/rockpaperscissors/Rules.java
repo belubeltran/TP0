@@ -1,6 +1,7 @@
 package ar.fiuba.tecnicas.rockpaperscissors;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Vector;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -10,6 +11,9 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+/** Clase Rules: se encarga de leer un archivo XML, para inicializar una tabla
+ * con los vectores que contienen los elementos a los que le gana cada uno.*/
 
 public class Rules extends DefaultHandler { 
 
@@ -88,19 +92,12 @@ public class Rules extends DefaultHandler {
 		initializeWins();
 	}
 	
-	public Vector<Element> getRockWins() {
-		return rockWins;
-	}
-	
-	public Vector<Element> getPaperWins() {
-		return paperWins;
-	}
-	
-	public Vector<Element> getScissorsWins() {
-		return scissorsWins;
-	}
-	
-	public Vector<Element> getFireWins() {
-		return fireWins;
+	public HashMap<Element,Vector<Element>> getRules() {
+		HashMap<Element,Vector<Element>> wins = new HashMap<Element,Vector<Element>>();
+		wins.put(Rock.getInstance(), rockWins);
+		wins.put(Paper.getInstance(), paperWins);
+		wins.put(Scissors.getInstance(), scissorsWins);
+		wins.put(Fire.getInstance(), fireWins);
+		return wins;
 	}
 }
