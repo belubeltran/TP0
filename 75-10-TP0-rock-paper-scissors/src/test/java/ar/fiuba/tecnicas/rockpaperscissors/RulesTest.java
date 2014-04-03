@@ -7,9 +7,10 @@ import static org.junit.Assert.assertEquals;
 
 public class RulesTest {
 
-    private Move rock = Rock.getInstance();
-    private Move paper = Paper.getInstance();
-    private Move scissors = Scissors.getInstance();
+    private Element rock = Rock.getInstance();
+    private Element paper = Paper.getInstance();
+    private Element scissors = Scissors.getInstance();
+    private Element fire;
 
     @Test
     public void rockBeatsScissors() {
@@ -23,7 +24,7 @@ public class RulesTest {
 
     @Test
     public void rockTieWithRock() {
-        assertEquals(Rock.getInstance(), rock.vs(rock));
+        assertEquals(rock, rock.vs(rock));
     }
 
     @Test
@@ -38,7 +39,7 @@ public class RulesTest {
 
     @Test
     public void paperTieWithPaper() {
-        assertEquals(Paper.getInstance(), paper.vs(paper));
+        assertEquals(paper, paper.vs(paper));
     }
 
     @Test
@@ -53,6 +54,26 @@ public class RulesTest {
 
     @Test
     public void scissorsTieWithScissors() {
-        assertEquals(Scissors.getInstance(), scissors.vs(scissors));
+        assertEquals(scissors, scissors.vs(scissors));
+    }
+
+    @Test
+    public void rockBeatsFire() {
+        assertEquals(rock, rock.vs(fire));
+    }
+
+    @Test
+    public void fireTieWithFire() {
+        assertEquals(fire, fire.vs(fire));
+    }
+
+    @Test
+    public void paperLostWithFire() {
+        assertEquals(paper, paper.vs(fire));
+    }
+
+    @Test
+    public void scissorsLostWithFire() {
+        assertEquals(scissors, scissors.vs(fire));
     }
 }

@@ -15,7 +15,6 @@ public class Referee {
 		wins.put(Rock.getInstance(), rules.getRockWins());
 		wins.put(Paper.getInstance(), rules.getPaperWins());
 		wins.put(Scissors.getInstance(), rules.getScissorsWins());
-		System.out.println("rockWins " + rules.getRockWins().get(0).getClass().getSimpleName());
 	}
 	
 	/** El Referee decide el elemento ganador en una partida. Lo hace a partir de la
